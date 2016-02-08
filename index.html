@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hawk - High Availability Web Konsole</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+    <!--[if lte IE 8]>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-old-ie-min.css">
+    <![endif]-->
+    <!--[if gt IE 8]><!-->
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css">
+    <!--<![endif]-->
+    <!--[if lt IE 9]>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/css/hawk.css" type="text/css">
+  </head>
+  <body>
+
+    <div class="header">
+      <div class="home-menu pure-menu pure-menu-horizontal pure-menu-fixed">
+        <a class="pure-menu-heading" href="">HAWK</a>
+
+        <ul class="pure-menu-list">
+          <li class="pure-menu-item"><a href="http://hawk-guide.readthedocs.org/en/latest/" class="pure-menu-link"><i class="fa fa-book"></i> Guide</a></li>
+          <li class="pure-menu-item"><a href="https://github.com/ClusterLabs/hawk" class="pure-menu-link"><i class="fa fa-code-fork"></i> Repository</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="splash-container">
+      <div class="splash">
+        <img class="pure-img-responsive" src="/img/hawk.png">
+        <h1 class="splash-head">HAWK</h1>
+        <div class="splash-subhead"></div>
+      </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+        <h2 class="content-head is-center">HIGH AVAILABILITY WEB KONSOLE</h2>
+
+        <div class="pure-g">
+          <div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">
+
+            <h3 class="content-subhead">
+              <i class="fa fa-dashboard"></i>
+              Cluster Web Interface
+            </h3>
+            <p>
+              <strong>Hawk is a web interface for Pacemaker HA clusters</strong>.
+              Use it to configure, manage and monitor just about any
+              kind of application running in Linux as a cluster
+              resource. Hawk makes Pacemaker easy to set up and use.
+            </p>
+          </div>
+          <div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">
+            <h3 class="content-subhead">
+              <i class="fa fa-sliders"></i>
+              Control
+            </h3>
+            <p>
+              Configure <strong>resources and constraints</strong>
+              directly from the web interface. Hawk supports advanced
+              Pacemaker features like resource tags and access control
+              lists.
+            </p>
+          </div>
+          <div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">
+            <h3 class="content-subhead">
+              <i class="fa fa-eye"></i>
+              Monitor
+            </h3>
+            <p>
+              Monitor your cluster by logging into Hawk from a desktop
+              computer or a mobile device. View multiple clusters at
+              once using the <strong>Multi-cluster
+              Dashboard</strong>. See the details of recent cluster
+              events.
+            </p>
+          </div>
+          <div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">
+            <h3 class="content-subhead">
+              <i class="fa fa-history"></i>
+              Investigate
+            </h3>
+            <p>
+              Use the <strong>History Explorer</strong> to collect and
+              analyze logs from all cluster nodes. Hawk can also run
+              on a non-cluster node, giving you all the tools you need
+              to investigate a problem without having to interfere
+              with a production system.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="ribbon l-box-lrg pure-g">
+        <div class="l-box-lrg is-center pure-u-1 pure-u-md-1-2 pure-u-lg-2-5">
+          <a href="#new-version"><img class="pure-img-responsive" alt="Hawk 2" width="1650" src="/img/s-status.png"></a>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-3-5">
+
+          <h2 class="content-head content-head-ribbon">Hawk 2 is released.</h2>
+
+          <p>
+            <strong>In Hawk 2.0, every aspect of the interface has
+            been updated, including a complete overhaul of the
+            frontend.</strong> Hawk is now based on Ruby on Rails 4.2,
+            the Puma web server and Bootstrap 3.
+          </p>
+          <p>
+            We now support many new Pacemaker features such as remote
+            nodes, resource tags and node utilization. The history
+            explorer has been greatly improved. The wizards now share
+            a backend with crmsh and are a lot more capable, including
+            support for package installation and configuration. There
+            are many other new features, for example viewing the raw
+            CIB directly in the interface and a command log showing
+            you what <tt>crmsh</tt> commands Hawk executes behind the
+            scenes. <a href="#new-version">Learn more.</a>
+          </p>
+        </div>
+      </div>
+
+
+      <div class="content">
+        <h2 class="content-head is-center">Introduction to Hawk</h2>
+
+        <div class="pure-g">
+          <div class="l-box-lrg pure-u-1 pure-u-md-3-5">
+
+            <h4>Overview</h4>
+
+            <p>
+              Hawk is a web interface for the Pacemaker High Availability stack. The
+              goal of the project is to create a complete interface to the HA
+              cluster, including the configuration, management and monitoring of
+              cluster resources.
+            </p>
+
+            <p>
+              Hawk runs on every node in the cluster, so that you can just point
+              your web browser at any node to access it. E.g.:
+            </p>
+
+            <pre class="code is-center">https://your-cluster-node:7630/</pre>
+
+            <p>
+              Hawk is always accessed via HTTPS, and requires users to log in prior
+              to providing access to the cluster. The same user privilege rules
+              apply as for Pacemaker itself: You need to log in as a user in the
+              <tt>haclient</tt> group. The easiest thing to do is to assign a password to
+              the <tt>hacluster</tt> user, and then to log in using that account. Note that
+              you will need to configure this user account on every node that you
+              will use Hawk on.
+            </p>
+
+            <p>
+              For more fine-grained control over access to the cluster, you can
+              create multiple user accounts and configure Access Control Lists (ACL)
+              for those users. These access control rules are available directly
+              from the Hawk user interface.
+            </p>
+
+            <p>
+              Once logged in, you will see a status view displaying the current
+              state of the cluster. All the configured cluster resources are shown
+              together with their status, as well as a general state of the cluster
+              and a list of recent cluster events (if any).
+            </p>
+
+            <p>
+              The navigation menu on the left hand side provides access to the
+              additional features of Hawk, such as the history explorer, the
+              multi-cluster dashboard and configuration management. On the top right
+              of the screen you can enable or disable the simulator, configure user
+              preferences and log out of the cluster.
+            </p>
+
+            <p>
+              Resource management operations (start, stop, online, standby, etc.)
+              can be performed using the menu of operations next to the resource in
+              the status view.
+            </p>
+
+          </div>
+
+          <div class="l-box-lrg pure-u-1 pure-u-md-2-5">
+
+            <h4>How to download</h4>
+            <i class="fa fa-4x fa-download is-right s-box"></i>
+
+            <p>
+              The easiest way to get Hawk is to use
+              the <a href="https://www.suse.com/products/highavailability/">SUSE
+              Linux Enterprise</a>
+              or <a href="https://www.opensuse.org/">openSUSE</a>
+              Linux distributions. We try to make sure that it works
+              on other distributions
+              and <a href="https://build.opensuse.org/package/show/network:ha-clustering:Factory/hawk2">make
+              packages available</a> for as many as we are able.
+            </p>
+            <p>
+              Another way to try Hawk is to look at
+              the <a href="http://hawk-guide.readthedocs.org/">guide</a>,
+              which includes a Vagrant configuration to set up a 1 - 3
+              node cluster.
+            </p>
+            <p>
+              Anyone willing to help us maintain packages for other
+              distributions is more than welcome!
+            </p>
+
+            <h4>More Information</h4>
+            <p>
+              <ul>
+                <li><a href="http://hawk-guide.readthedocs.org/">Hawk Guide</a></li>
+                <li><a href="http://www.suse.com/documentation/sle_ha/book_sleha/?page=/documentation/sle_ha/book_sleha/data/cha_ha_configuration_hawk.html">SUSE Linux Enterprise High Availability Extension documentation</a></li>
+              </ul>
+            </p>
+
+
+            <h4>Related Software</h4>
+            <i class="fa fa-4x fa-globe is-right s-box"></i>
+            <p>
+              <ul>
+                <li><a href="http://clusterlabs.org">Pacemaker</a></li>
+                <li><a href="http://crmsh.github.io">CRM shell</a></li>
+                <li><a href="https://github.com/ClusterLabs/booth">Booth</a></li>
+                <li><a href="https://github.com/ClusterLabs/resource-agents">Resource Agents</a></li>
+                <li><a href="https://github.com/ClusterLabs/fence-agents">Fence Agents</a></li>
+                <li><a href="https://github.com/ClusterLabs/sbd">SBD</a></li>
+                <li><a href="http://www.linux-ha.org/wiki/Cluster_Glue">Cluster Glue</a></li>
+              </ul>
+            </p>
+
+            <h4>Contact Us</h4>
+            <i class="fa fa-4x fa-comments is-right s-box"></i>
+            <p>
+              Hawk is developed at github, please file any issues or submit patches
+              via <a href="https://github.com/ClusterLabs/hawk/issues">the github interface</a>.
+            </p>
+            <p>
+              Please direct comments, feedback, questions etc. to
+              the <a href="http://clusterlabs.org/mailman/listinfo/users">ClusterLabs
+              mailing list</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <h2 class="content-head is-center">Hawk at SUSEcon 2015 Video</h2>
+        <div class="pure-g">
+          <div class="pure-u-1 pure-u-md-1-6 pure-u-lg-1-4">
+          </div>
+
+          <div class="pure-u-1 pure-u-md-2-3 pure-u-lg-1-2 is-center">
+
+            <div class="video-wrapper">
+              <iframe width="640" height="360" src="https://www.youtube.com/embed/ErzuXjv5RFk?rel=0" frameborder="0" allowfullscreen></iframe>
+            </div>
+          </div>
+
+          <div class="pure-u-1 pure-u-md-1-6 pure-u-lg-1-4">
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <h2 id="new-version" class="content-head is-center">New in version 2.0</h2>
+
+        <div class="pure-g">
+          <div class="l-box pure-u-1 pure-u-md-1-3 is-center">
+            <img class="pure-img-responsive" alt="Hawk 2" width="968" src="/img/s-actions.png">
+          </div>
+
+          <div class="l-box-lrg pure-u-1 pure-u-md-2-3">
+            <h4>Frontend redesign</h4>
+            <p>
+              The Hawk frontend has been modernised, and now uses
+              Bootstrap 3. The layout and organization of the user
+              interface has been rethought with usability in mind.
+            </p>
+
+            <h4>Updated backend</h4>
+            <p>
+              Hawk 2 is based on Ruby on Rails 4.2 running on the Puma
+              web server. By using Puma, we can make Hawk as
+              unintrusive as possible on the cluster nodes without
+              compromising performance. In fact, thanks to the use of
+              asset precompilation Hawk 2 should perform better than
+              the Hawk 1 interface despite the updated visual style.
+            </p>
+
+            <h4>Wizards</h4>
+            <p>
+              In Hawk 1, the wizards were implemented as a custom
+              solution. For Hawk 2, the wizards have been moved into
+              the crm shell, making them available from the command
+              line as well. In addition to this move, the wizards have
+              been greatly improved. They now feature optional steps
+              and multi-step configuration (for example, in case
+              resources in an earlier step need to be started before
+              configuring the next set of resources). Wizards are also
+              able to perform complex actions like installing and
+              configuring necessary software packages.
+            </p>
+
+            <h4>Integrated dashboard</h4>
+            <p>
+              The multi-cluster dashboard has been integrated into the
+              main interface. Now you can monitor multiple clusters
+              directly from the regular Hawk UI.
+            </p>
+          </div>
+
+          <div class="l-box-lrg pure-u-1 pure-u-md-2-3">
+            <h4>New Pacemaker Features</h4>
+            <p>
+              We support many features that have been added recently
+              to the Pacemaker resource manager: <strong>Location
+              constraints</strong> apply to several resources at
+              once. <strong>Tags</strong> are a lightweight way to
+              manage related resources without any dependency between
+              them. <strong>Remote nodes</strong> lets you manage both
+              hypervisors and resources running inside virtual
+              machines as a single cluster. And more!
+            </p>
+
+            <h4>Configuration view and Command Log</h4>
+            <p>
+              To make the transition between command line usage and
+              the web interface easier, we've added the ability to
+              view the current cluster configuration in the command
+              line format, complete with syntax highlighting. Also,
+              the command log provides a list of recent commands
+              executed on the cluster from the web interface. This can
+              serve as a basic audit log, as well as helping new users
+              learn the command line interface directly by performing
+              operations on the cluster.
+            </p>
+
+            <h4>History Explorer and Simulator</h4>
+            <p>
+              Together with the general improvements to the interface,
+              the History Explorer has been redesigned to be easier to
+              use and more powerful. Now you can see more details for
+              each transition, as well as easily navigate forward and
+              backward in time through a report. The History Explorer
+              now also shows a summary of important events directly
+              when opening the report, to make it easy to find the
+              relevant events in the log. The report generation,
+              download and upload functions are all now accessible
+              from a single location.
+            </p>
+            <p>
+              Similarly, the Simulator has been updated to not only be
+              prettier (if you ever used the old version, you'll know
+              what I mean) but also easier to use.
+            </p>
+          </div>
+
+          <div class="l-box pure-u-1 pure-u-md-1-3 is-center">
+            <img class="pure-img-responsive" alt="Hawk 2" width="1377" src="/img/s-history.png">
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <h2 id="new-version" class="content-head is-center">Credits</h2>
+        <div class="pure-g">
+          <div class="l-box pure-u-1 is-center">
+            Hawk was created by
+            <a href="https://github.com/tserong">@tserong</a> and remade by
+            <a href="https://github.com/krig">@krig</a>,
+            <a href="https://github.com/tboerger">@tboerger</a>,
+            <a href="https://github.com/manuelecarlini">@manuelecarlini</a> and
+            <a href="https://github.com/thutterer">@thutterer</a>.
+          </div>
+        </div>
+      </div>
+
+      <div class="footer l-box is-center">
+        Copyright 2016, SUSE. Website built with <a href="http://purecss.io/">Pure.css</a>.
+      </div>
+    </div>
+  </body>
+</html>
